@@ -1,0 +1,10 @@
+Job to enable all user in AX 2012 R3
+
+UserInfo   Userinfo;
+ttsbegin;
+While select forupdate Userinfo where userinfo.enable == NoYes::No
+{
+            Userinfo.Enable = NoYes::Yes;
+            Userinfo.update();
+}
+         ttscommit;
