@@ -1,0 +1,7 @@
+Disabling multiple users in Dynamics 365 For Finance and Operations
+
+select *from USERINFO
+
+update userinfo set [enable] = 0 where ID <> 'Admin'
+
+update userinfo set [enable] = 1 where ID <> 'Admin'
