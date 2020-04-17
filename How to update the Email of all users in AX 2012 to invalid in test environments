@@ -1,0 +1,5 @@
+How to update the Email of all users in AX 2012 to invalid in test environments
+
+Open SSMS:
+
+update SYSUSERINFO Set EMAIL = 'invalid@email.com' where EMAIL != ''
