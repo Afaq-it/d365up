@@ -1,0 +1,8 @@
+How to disable customer experience improvement program dialog in AX 2012
+
+Open SSMS>
+
+update SysUserInfo
+set SqmEnabled = 1 --1 = no
+--2 = yes
+where SqmEnabled = 0 --0 = prompt
