@@ -1,0 +1,35 @@
+#Just change the $MailTo and you can copy/paste this into a Powershell window.
+ 
+# Sender and Recipient Info
+$MailFrom = "ERPAdmin@umeshpandit.com"
+$MailTo = "pandit.umesh@hotmail.com"
+ 
+# Sender Credentials
+$Username = "Admin@umeshpandit.com"
+$Password = "passwodord1111@@@@"
+ 
+# Server Info
+$SmtpServer = "smtp.office365.com"
+$SmtpPort = "587"
+ 
+# Message stuff
+$MessageSubject = "test smtp.office365.com ssl" 
+$Message = New-Object System.Net.Mail.MailMessage $MailFrom,$MailTo
+$Message.IsBodyHTML = $true
+$Message.Subject = $MessageSubject
+$Message.Body = @'
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+This is a test message from UmeshPandit.com
+</body>
+</html>
+'@
+ 
+# Construct the SMTP client object, credentials, and send
+$Smtp = New-Object Net.Mail.SmtpClient($SmtpServer,$SmtpPort)
+$Smtp.EnableSsl = $true
+$Smtp.Credentials = New-Object System.Net.NetworkCredential($Username,$Password)
+$Smtp.Send($Message)
